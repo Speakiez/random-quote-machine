@@ -4,5 +4,53 @@
 }
 
 body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
     background-color: #009899;
+}
+
+.tab-wrapper {
+    width: 580px;
+    height: 500px;
+    background-color: #CCCCCC;
+    border-top: 2px solid #FFFFFF;
+    border-right: 2px solid #687076;
+    border-bottom: 2px solid #687076;
+    border-left: 2px solid #FFFFFF;
+    box-shadow: 2px 2px #004242;
+}
+
+.tab-header {
+    width: 572px;
+    height: 28px;
+    margin: 2px 2px;
+    padding: 0 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #FFFFFF;
+    font-weight: bold;
+    background-color: #1F0083;
+    border: 2px solid#170062;
+}
+
+.tab-button {
+    width: 24px;
+    font-weight: bold;
+    background-color: #CCCCCC;
+    border-top: 2px solid #FFFFFF;
+    border-right: 2px solid #687076;
+    border-bottom: 2px solid #687076;
+    border-left: 2px solid #FFFFFF;
+    box-shadow: 2px 2px #170062;
+}
+
+.tab-button:active {
+    border-top: 2px solid #687076;
+    border-right: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    border-left: 2px solid #687076;
 }
