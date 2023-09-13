@@ -49,6 +49,7 @@ const getRandomQuote = () => {
 const displayQuote = (quote) => {
     let i = 0;
     let j = 0;
+    let speed = 40;
 
     function typeText() {
         setTimeout(function() {
@@ -59,7 +60,7 @@ const displayQuote = (quote) => {
             } else {
                 typeAuthor();
             }
-        }, 50)
+        }, speed)
     }
 
     function typeAuthor() {
@@ -69,7 +70,7 @@ const displayQuote = (quote) => {
             if (j < quote.author.length) {
                 typeAuthor();
             }
-        }, 50)
+        }, speed + 10)
     }
 
     typeText();
