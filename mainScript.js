@@ -79,3 +79,9 @@ const displayQuote = (quote) => {
 window.onload = () => {
     displayQuote(getRandomQuote());
 }
+
+document.querySelector(".new-quote").addEventListener("click", function() {
+    document.getElementById("text").innerHTML = "";
+    document.getElementById("author").innerHTML = "";
+    displayQuote(getRandomQuote());
+});
