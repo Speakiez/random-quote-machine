@@ -12,9 +12,8 @@ body {
     background-color: #009899;
 }
 
-.tab-wrapper {
+.wrapper {
     width: 580px;
-    height: 500px;
     background-color: #CCCCCC;
     border-top: 2px solid #FFFFFF;
     border-right: 2px solid #687076;
@@ -23,7 +22,9 @@ body {
     box-shadow: 2px 2px #004242;
 }
 
-.tab-header {
+/* Header Section */
+
+.header {
     width: 572px;
     height: 28px;
     margin: 2px 2px;
@@ -37,7 +38,7 @@ body {
     border: 2px solid#170062;
 }
 
-.tab-button {
+.header button {
     width: 24px;
     font-weight: bold;
     background-color: #CCCCCC;
@@ -48,9 +49,31 @@ body {
     box-shadow: 2px 2px #170062;
 }
 
-.tab-button:active {
+.header button:active {
     border-top: 2px solid #687076;
     border-right: 2px solid #FFFFFF;
     border-bottom: 2px solid #FFFFFF;
     border-left: 2px solid #687076;
+}
+
+/* Content Section */
+
+.quote {
+    width: 571px;
+    margin: 4px 3px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-top: 2px solid #000000;
+    border-right: 2px solid #687076;
+    border-bottom: 2px solid #687076;
+    border-left: 2px solid #000000;
+    box-shadow: -1px -1px #687076;
+}
+
+.quote-text {
+    font-size: 24px;
+}
+
+.quote-author {
+    text-align: right;
 }
