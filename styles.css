@@ -47,13 +47,16 @@ body {
     border-bottom: 2px solid #687076;
     border-left: 2px solid #FFFFFF;
     box-shadow: 2px 2px #170062;
+    cursor: pointer;
 }
 
 .header button:active {
+    color: #687076;
     border-top: 2px solid #687076;
     border-right: 2px solid #FFFFFF;
     border-bottom: 2px solid #FFFFFF;
     border-left: 2px solid #687076;
+    box-shadow: none;
 }
 
 /* Content Section */
@@ -75,5 +78,54 @@ body {
 }
 
 .quote-author {
+    margin-top: 2px;
     text-align: right;
+}
+
+/* Buttons Section */
+
+.buttons {
+    width: 568px;
+    margin: 6px 4px 8px 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons a {
+    width: 32px;
+    height: 32px;
+    padding: 5px;
+    color: #1F0083;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    background-color: #CCCCCC;
+    border-top: 2px solid #FFFFFF;
+    border-right: 2px solid #687076;
+    border-bottom: 2px solid #687076;
+    border-left: 2px solid #FFFFFF;
+    box-shadow: 2px 2px #000000;
+}
+
+.buttons button {
+    width: 92px;
+    padding: 5px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #CCCCCC;
+    border-top: 2px solid #FFFFFF;
+    border-right: 2px solid #687076;
+    border-bottom: 2px solid #687076;
+    border-left: 2px solid #FFFFFF;
+    box-shadow: 2px 2px #000000;
+    cursor: pointer;
+}
+
+.buttons button:active {
+    color: #687076;
+    border-top: 2px solid #687076;
+    border-right: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    border-left: 2px solid #687076;
+    box-shadow: none;
 }
