@@ -46,10 +46,13 @@ const getRandomQuote = () => {
     return newQuote;
 }
 
+let running = false;
+
 const displayQuote = (quote) => {
     let i = 0;
     let j = 0;
     let speed = 40;
+    running = true;
 
     function typeText() {
         setTimeout(function() {
@@ -69,6 +72,8 @@ const displayQuote = (quote) => {
             j++;
             if (j < quote.author.length) {
                 typeAuthor();
+            } else {
+                running = false;
             }
         }, speed + 10)
     }
@@ -81,7 +86,9 @@ window.onload = () => {
 }
 
 document.querySelector(".new-quote").addEventListener("click", function() {
-    document.getElementById("text").innerHTML = "";
-    document.getElementById("author").innerHTML = "";
-    displayQuote(getRandomQuote());
+    if (running == false) {
+        document.getElementById("text").innerHTML = "";
+        document.getElementById("author").innerHTML = "";
+        displayQuote(getRandomQuote());
+    }
 });
