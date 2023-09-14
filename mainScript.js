@@ -41,55 +41,48 @@ const quotesArray = [
     }
 ];
 
-let running = false;
+let textSpan = document.getElementById("text");
+let authorSpan = document.getElementById("author");
+let displayingQuote = false;
+let speed = 40;
 
-const getRandomQuote = () => {
+function removeQuote() {
+    textSpan.innerHTML = "";
+    authorSpan.innerHTML = "";
+}
+
+function randomQuote() {
     const newQuote = quotesArray[Math.floor(Math.random() * quotesArray.length)];
     return newQuote;
 }
 
-const displayQuote = (currentQuote) => {
-    if (running == true) return
+// This function types the entire quote including the author then sets displayingQuote to false
+function typeQuote(currentQuote, i) {
+    setTimeout(function() {
+        if (authorSpan.innerHTML == currentQuote.author) {
+            displayingQuote = false;
+        } else if (textSpan.innerHTML != currentQuote.quote) {
+            textSpan.innerHTML += currentQuote.quote.charAt(i);
+        }
+        i -= currentQuote.quote.length;
+        authorSpan.innerHTML += currentQuote.author.charAt(i);
+    }, speed * i)
+}
 
-    let i = 0;
-    let j = 0;
-    let speed = 40;
-    running = true;
+function getNewQuote(randomQuote) {
+    if (displayingQuote == true) return
+    displayingQuote = true;
 
-    document.getElementById("text").innerHTML = "";
-    document.getElementById("author").innerHTML = "";
-
-    function typeText() {
-        setTimeout(function() {
-            document.getElementById("text").innerHTML += currentQuote.quote.charAt(i);
-            i++;
-            if (i < currentQuote.quote.length) {
-                typeText();
-            } else {
-                typeAuthor();
-            }
-        }, speed)
+    removeQuote();
+    for (let i = 0; i <= randomQuote.quote.length + randomQuote.author.length; i++) {
+        typeQuote(randomQuote, i);
     }
-
-    function typeAuthor() {
-        setTimeout(function() {
-            document.getElementById("author").innerHTML += currentQuote.author.charAt(j);
-            j++;
-            if (j < currentQuote.author.length) {
-                typeAuthor();
-            } else {
-                running = false;
-            }
-        }, speed + 10)
-    }
-
-    typeText();
 }
 
 $(document).ready(function() {
-    displayQuote(getRandomQuote());
+    getNewQuote(randomQuote());
 
     $("#new-quote").click(function() {
-        displayQuote(getRandomQuote());
+        getNewQuote(randomQuote());
     });
 });
