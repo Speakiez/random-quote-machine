@@ -97,4 +97,12 @@ $(document).ready(function() {
     $("#new-quote").click(function() {
         getNewQuote(randomQuote());
     });
+
+    $(".credits").click(function() {
+        window.open("https://github.com/Speakiez");
+    });
+
+    $(".secret").click(function() {
+        window.open("https://www.youtube.com/watch?v=xvFZjo5PgG0");
+    });
 });
