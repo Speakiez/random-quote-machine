@@ -1,42 +1,42 @@
-const quotes = [
+const quotesArray = [
     {
-        text: "You must be the change you wish to see in the world.",
+        quote: "You must be the change you wish to see in the world.",
         author: "- Mahatma Gandhi"
     },
     {
-        text: "Spread love everywhere you go. Let no one ever come to you without leaving happier.",
+        quote: "Spread love everywhere you go. Let no one ever come to you without leaving happier.",
         author: "- Mother Teresa"
     },
     {
-        text: "The only thing we have to fear is fear itself.",
+        quote: "The only thing we have to fear is fear itself.",
         author: "- Franklin D. Roosevelt"
     },
     {
-        text: "Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that.",
+        quote: "Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that.",
         author: "- Martin Luther King Jr."
     },
     {
-        text: "Do one thing every day that scares you.",
+        quote: "Do one thing every day that scares you.",
         author: "- Eleanor Roosevelt"
     },
     {
-        text: "Well done is better than well said.",
+        quote: "Well done is better than well said.",
         author: "- Benjamin Franklin"
     },
     {
-        text: "The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart.",
+        quote: "The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart.",
         author: "- Helen Keller"
     },
     {
-        text: "It is during our darkest moments that we must focus to see the light.",
+        quote: "It is during our darkest moments that we must focus to see the light.",
         author: "- Aristotle"
     },
     {
-        text: "Do not go where the path may lead, go instead where there is no path and leave a trail.",
+        quote: "Do not go where the path may lead, go instead where there is no path and leave a trail.",
         author: "- Ralph Waldo Emerson"
     },
     {
-        text: "Be yourself; everyone else is already taken.",
+        quote: "Be yourself; everyone else is already taken.",
         author: "- Oscar Wilde"
     }
 ];
@@ -44,11 +44,11 @@ const quotes = [
 let running = false;
 
 const getRandomQuote = () => {
-    const newQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    const newQuote = quotesArray[Math.floor(Math.random() * quotesArray.length)];
     return newQuote;
 }
 
-const displayQuote = (quote) => {
+const displayQuote = (currentQuote) => {
     if (running == true) return
 
     let i = 0;
@@ -61,9 +61,9 @@ const displayQuote = (quote) => {
 
     function typeText() {
         setTimeout(function() {
-            document.getElementById("text").innerHTML += quote.text.charAt(i);
+            document.getElementById("text").innerHTML += currentQuote.quote.charAt(i);
             i++;
-            if (i < quote.text.length) {
+            if (i < currentQuote.quote.length) {
                 typeText();
             } else {
                 typeAuthor();
@@ -73,9 +73,9 @@ const displayQuote = (quote) => {
 
     function typeAuthor() {
         setTimeout(function() {
-            document.getElementById("author").innerHTML += quote.author.charAt(j);
+            document.getElementById("author").innerHTML += currentQuote.author.charAt(j);
             j++;
-            if (j < quote.author.length) {
+            if (j < currentQuote.author.length) {
                 typeAuthor();
             } else {
                 running = false;
