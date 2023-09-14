@@ -41,18 +41,23 @@ const quotes = [
     }
 ];
 
+let running = false;
+
 const getRandomQuote = () => {
     const newQuote = quotes[Math.floor(Math.random() * quotes.length)];
     return newQuote;
 }
 
-let running = false;
-
 const displayQuote = (quote) => {
+    if (running == true) return
+
     let i = 0;
     let j = 0;
     let speed = 40;
     running = true;
+
+    document.getElementById("text").innerHTML = "";
+    document.getElementById("author").innerHTML = "";
 
     function typeText() {
         setTimeout(function() {
@@ -81,14 +86,10 @@ const displayQuote = (quote) => {
     typeText();
 }
 
-window.onload = () => {
+$(document).ready(function() {
     displayQuote(getRandomQuote());
-}
 
-document.querySelector(".new-quote").addEventListener("click", function() {
-    if (running == false) {
-        document.getElementById("text").innerHTML = "";
-        document.getElementById("author").innerHTML = "";
+    $("#new-quote").click(function() {
         displayQuote(getRandomQuote());
-    }
+    });
 });
