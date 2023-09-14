@@ -46,7 +46,7 @@ let authorSpan = document.getElementById("author");
 let displayingQuote = false;
 let speed = 40;
 
-function removeQuote() {
+function removeOldQuote() {
     textSpan.innerHTML = "";
     authorSpan.innerHTML = "";
 }
@@ -56,8 +56,8 @@ function randomQuote() {
     return newQuote;
 }
 
-// This function types the entire quote including the author then sets displayingQuote to false
-function typeQuote(currentQuote, i) {
+// This function displays the entire quote including the author then sets displayingQuote to false
+function displayQuote(currentQuote, i) {
     setTimeout(function() {
         if (authorSpan.innerHTML == currentQuote.author) {
             displayingQuote = false;
@@ -73,10 +73,22 @@ function getNewQuote(randomQuote) {
     if (displayingQuote == true) return
     displayingQuote = true;
 
-    removeQuote();
-    for (let i = 0; i <= randomQuote.quote.length + randomQuote.author.length; i++) {
-        typeQuote(randomQuote, i);
+    let currentQuote = randomQuote.quote;
+    let currentAuthor = randomQuote.author;
+
+    removeOldQuote();
+    tweetQuote(currentQuote, currentAuthor)
+    for (let i = 0; i <= currentQuote.length + currentAuthor.length; i++) {
+        displayQuote(randomQuote, i);
     }
+}
+
+function tweetQuote(quote, author) {
+    $('#tweet-quote').attr(
+        'href',
+        'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' +
+            encodeURIComponent('"' + quote + '" ' + author)
+    );
 }
 
 $(document).ready(function() {
