@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+html {
+    font-size: 62.5%;
+}
+
 body {
     height: 100vh;
     display: flex;
@@ -12,8 +16,36 @@ body {
     background-color: #009899;
 }
 
+button, a {
+    font-weight: bold;
+    background-color: #CCCCCC;
+    border-top: 2px solid #FFFFFF;
+    border-right: 2px solid #687076;
+    border-bottom: 2px solid #687076;
+    border-left: 2px solid #FFFFFF;
+    box-shadow: 2px 2px #000000;
+    cursor: pointer;
+}
+
+a {
+    padding: 5px;
+    color: #1F0083;
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+
+button:active {
+    color: #687076;
+    border-top: 2px solid #687076;
+    border-right: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    border-left: 2px solid #687076;
+    box-shadow: none;
+}
+
 .wrapper {
-    width: 580px;
     background-color: #CCCCCC;
     border-top: 2px solid #FFFFFF;
     border-right: 2px solid #687076;
@@ -33,6 +65,7 @@ body {
     align-items: center;
     justify-content: space-between;
     color: #FFFFFF;
+    font-size: 1.75rem;
     font-weight: bold;
     background-color: #1F0083;
     border: 2px solid#170062;
@@ -40,23 +73,7 @@ body {
 
 .header button {
     width: 24px;
-    font-weight: bold;
-    background-color: #CCCCCC;
-    border-top: 2px solid #FFFFFF;
-    border-right: 2px solid #687076;
-    border-bottom: 2px solid #687076;
-    border-left: 2px solid #FFFFFF;
     box-shadow: 2px 2px #170062;
-    cursor: pointer;
-}
-
-.header button:active {
-    color: #687076;
-    border-top: 2px solid #687076;
-    border-right: 2px solid #FFFFFF;
-    border-bottom: 2px solid #FFFFFF;
-    border-left: 2px solid #687076;
-    box-shadow: none;
 }
 
 /* Content Section */
@@ -74,11 +91,12 @@ body {
 }
 
 .quote-text {
-    font-size: 24px;
+    font-size: 2.4rem;
 }
 
 .quote-author {
     margin-top: 2px;
+    font-size: 1.5rem;
     text-align: right;
 }
 
@@ -91,46 +109,18 @@ body {
     justify-content: space-between;
 }
 
-.buttons a {
-    width: 32px;
-    height: 32px;
-    padding: 5px;
-    color: #1F0083;
-    font-weight: bold;
-    text-decoration: none;
-    text-align: center;
-    background-color: #CCCCCC;
-    border-top: 2px solid #FFFFFF;
-    border-right: 2px solid #687076;
-    border-bottom: 2px solid #687076;
-    border-left: 2px solid #FFFFFF;
-    box-shadow: 2px 2px #000000;
+.links {
+    display: flex;
+    gap: 4px;
 }
 
-.buttons .post-quote {
-    position: relative;
-    right: 200px;
+.links a {
+    width: 32px;
+    height: 32px;
 }
 
 .buttons button {
     width: 92px;
     padding: 5px;
-    font-weight: bold;
-    text-align: center;
-    background-color: #CCCCCC;
-    border-top: 2px solid #FFFFFF;
-    border-right: 2px solid #687076;
-    border-bottom: 2px solid #687076;
-    border-left: 2px solid #FFFFFF;
-    box-shadow: 2px 2px #000000;
-    cursor: pointer;
-}
-
-.buttons button:active {
-    color: #687076;
-    border-top: 2px solid #687076;
-    border-right: 2px solid #FFFFFF;
-    border-bottom: 2px solid #FFFFFF;
-    border-left: 2px solid #687076;
-    box-shadow: none;
+    font-size: 1.25rem;
 }
