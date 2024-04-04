@@ -1,4 +1,4 @@
 # random_quote_machine.98
-Random Quote Generator
+A windows 98 inspired Random Quote Generator
 
-This is a project I'm making for the freeCodeCamp Front End Development Libraries Course.
+This is a project I made for the freeCodeCamp Front End Development Libraries Course.
