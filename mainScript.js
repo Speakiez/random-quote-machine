@@ -1,59 +1,31 @@
-const quotesArray = [
-    {
-        quote: "You must be the change you wish to see in the world.",
-        author: "- Mahatma Gandhi"
-    },
-    {
-        quote: "Spread love everywhere you go. Let no one ever come to you without leaving happier.",
-        author: "- Mother Teresa"
-    },
-    {
-        quote: "The only thing we have to fear is fear itself.",
-        author: "- Franklin D. Roosevelt"
-    },
-    {
-        quote: "Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that.",
-        author: "- Martin Luther King Jr."
-    },
-    {
-        quote: "Do one thing every day that scares you.",
-        author: "- Eleanor Roosevelt"
-    },
-    {
-        quote: "Well done is better than well said.",
-        author: "- Benjamin Franklin"
-    },
-    {
-        quote: "The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart.",
-        author: "- Helen Keller"
-    },
-    {
-        quote: "It is during our darkest moments that we must focus to see the light.",
-        author: "- Aristotle"
-    },
-    {
-        quote: "Do not go where the path may lead, go instead where there is no path and leave a trail.",
-        author: "- Ralph Waldo Emerson"
-    },
-    {
-        quote: "Be yourself; everyone else is already taken.",
-        author: "- Oscar Wilde"
-    }
-];
+// Variable Declaration //
 
-let textSpan = document.getElementById("text");
-let authorSpan = document.getElementById("author");
+const textSpan = document.getElementById("text");
+const authorSpan = document.getElementById("author");
 let displayingQuote = false;
 let speed = 40;
 
-function removeOldQuote() {
-    textSpan.innerHTML = "";
-    authorSpan.innerHTML = "";
+// Function Declaration //
+
+async function fetchRandomQuote() {
+    if (displayingQuote === true) return
+    displayingQuote = true;
+
+    try {
+        const res = await fetch("https://api.quotable.io/quotes/random");
+        const data = await res.json();
+        data[0].author = "- " + data[0].author;
+        displayingQuote = false;
+        return data[0];
+    } catch (error) {
+        alert("Unable to get random quote");
+        displayingQuote = false;
+    }
 }
 
-function randomQuote() {
-    const newQuote = quotesArray[Math.floor(Math.random() * quotesArray.length)];
-    return newQuote;
+function removeOldQuote(placeholder = "") {
+    textSpan.innerHTML = placeholder;
+    authorSpan.innerHTML = "";
 }
 
 // This function displays the entire quote including the author then sets displayingQuote to false
@@ -61,19 +33,19 @@ function displayQuote(currentQuote, i) {
     setTimeout(function() {
         if (authorSpan.innerHTML == currentQuote.author) {
             displayingQuote = false;
-        } else if (textSpan.innerHTML != currentQuote.quote) {
-            textSpan.innerHTML += currentQuote.quote.charAt(i);
+        } else if (textSpan.innerHTML != currentQuote.content) {
+            textSpan.innerHTML += currentQuote.content.charAt(i);
         }
-        i -= currentQuote.quote.length;
+        i -= currentQuote.content.length;
         authorSpan.innerHTML += currentQuote.author.charAt(i);
     }, speed * i)
 }
 
 function getNewQuote(randomQuote) {
-    if (displayingQuote == true) return
+    if (displayingQuote === true) return
     displayingQuote = true;
 
-    let currentQuote = randomQuote.quote;
+    let currentQuote = randomQuote.content;
     let currentAuthor = randomQuote.author;
 
     removeOldQuote();
@@ -91,11 +63,17 @@ function tweetQuote(quote, author) {
     );
 }
 
+// Event Handling //
+
 $(document).ready(function() {
-    getNewQuote(randomQuote());
+    removeOldQuote("...");
+    fetchRandomQuote().then((randomQuote) => getNewQuote(randomQuote));
 
     $("#new-quote").click(function() {
-        getNewQuote(randomQuote());
+        if (displayingQuote === true) return
+
+        removeOldQuote("...");
+        fetchRandomQuote().then((randomQuote) => getNewQuote(randomQuote));
     });
 
     $(".credits").click(function() {
